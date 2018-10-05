@@ -25,6 +25,7 @@ extension Person: Hashable, Diffable {
     }
 }
 
+
 final class FastDiffTests: XCTestCase {
 
     func test_whenEmptyIntArrayIsDiffedWithSingleElementArray_thenThereIs1Insertion() {
