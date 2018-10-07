@@ -18,7 +18,7 @@ General purpose, fast diff algorithm supporting [m] level nested diffs.
 ```swift
 pod 'FastDiff'
 ```
-And then in the terminal `pod update`. If you are new to cocoapods please check out ![Cocoapods Installation](https://guides.cocoapods.org/using/using-cocoapods)
+And then in the terminal `pod update`. If you are new to cocoapods please check out [Cocoapods Installation](https://guides.cocoapods.org/using/using-cocoapods)
 
 ### Via Swift Package Manager
 Declare the dependency in the swift `Package.swift` file like such:
@@ -66,7 +66,7 @@ let orderedChangeSet = orderedOperation(from: changeSet)
 
 ```
 ### Concept and advanced usage in List View Controller (iOS)
-Please check out this presentation slides that I gave at @mobiconf 2018. https://drive.google.com/file/d/1eY0k_5sHBDgK6Qx6-VR3HTmCQEi9qaW3/view?usp=sharing 
+Please check out this presentation slides that I gave at [@mobiconf 2018](https://drive.google.com/file/d/1eY0k_5sHBDgK6Qx6-VR3HTmCQEi9qaW3/view?usp=sharing)
 
 ## Contributing
 
