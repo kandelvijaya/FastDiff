@@ -14,6 +14,33 @@ Go to the source directory, and run:
 $ swift test
 ```
 
+## Usage
+### Algorithm & Verification
+```swift
+let oldModels = ["apple", "microsoft"]
+let newModels = ["apple", "microsoft", "tesla"]
+
+
+/// Algorithm
+let changeSet = diff(oldModels, newModels)
+// [.addition("tesla", at: 2)]
+
+
+/// Verification
+oldModels.merged(with: changeSet) == newModels 
+```
+Note that `diff` produces changeset that can't be merged into old collections as is, most of the times. 
+The changeset has to be `ordered` in-order for successful merge. This is also useful if you want to
+apply changeset to `UITableView` or `UICollectionView`.
+
+```swift
+let chnageSet = diff(["A","B"], [“C”,"D"])
+// [.delete("A",0), .delete("B",1), .add("C",0), .add(“D",1)]
+
+let orderedChangeSet = orderedOperation(from: changeSet)
+// [.delete("b",1), .delete("a",0), .add("c",0), .add("d",1)]
+
+```
 ## Contributing
 
 Feel free to contribute with Pull Requests. There are many tasks (trivial) left to do. 
