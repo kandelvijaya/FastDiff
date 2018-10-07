@@ -1,4 +1,10 @@
-# Fast Diff
+<div align="center">
+  <img src="logo.png"><br><br>
+</div>
+
+-----------------
+
+# Fast Diff ![CI status](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
 General purpose, fast diff algorithm supporting [m] level nested diffs.  
 
@@ -41,6 +47,9 @@ let orderedChangeSet = orderedOperation(from: changeSet)
 // [.delete("b",1), .delete("a",0), .add("c",0), .add("d",1)]
 
 ```
+### Concept and advanced usage in List View Controller (iOS)
+Please check out this presentation slides that I gave at @mobiconf 2018. https://drive.google.com/file/d/1eY0k_5sHBDgK6Qx6-VR3HTmCQEi9qaW3/view?usp=sharing 
+
 ## Contributing
 
 Feel free to contribute with Pull Requests. There are many tasks (trivial) left to do. 
@@ -53,7 +62,7 @@ Feel free to contribute with Pull Requests. There are many tasks (trivial) left 
 ## Authors
 
 At the moment, solely me:
-1. @kandelvijaya
+1. @kandelvijaya (https://twitter.com/kandelvijaya)
 
 ## License
 
