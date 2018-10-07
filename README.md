@@ -1,4 +1,4 @@
-# Fast Diff
+# Fast Diff ![CI status](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
 General purpose, fast diff algorithm supporting [m] level nested diffs.  
 
