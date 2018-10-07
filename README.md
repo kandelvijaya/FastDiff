@@ -1,3 +1,9 @@
+<div align="center">
+  <img src="logo.png"><br><br>
+</div>
+
+-----------------
+
 # Fast Diff ![CI status](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
 General purpose, fast diff algorithm supporting [m] level nested diffs.  
