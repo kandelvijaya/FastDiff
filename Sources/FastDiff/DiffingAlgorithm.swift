@@ -125,7 +125,7 @@ extension LineLookup: CustomStringConvertible {
 
 
 
-func diff<T>(_ oldContent: [T], _ newContent: [T]) -> [Operation<T>] where T: Diffable {
+public func diff<T>(_ oldContent: [T], _ newContent: [T]) -> [Operation<T>] where T: Diffable {
 
     typealias DiffHash = Int
 
