@@ -73,9 +73,7 @@ Please check out this presentation slides that I gave at [@mobiconf 2018](https:
 Feel free to contribute with Pull Requests. There are many tasks (trivial) left to do. 
 
 ### Potential Tasks
-- Cocoapods support
-- Documentation grammar correction
-- Adding CI and build status
+- Check the issues section for helpful tasks and more description. This is a good place to start contributing. 
 
 ## Authors
 
