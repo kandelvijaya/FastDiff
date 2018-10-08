@@ -1,6 +1,6 @@
 //
 //  InternalDiff.swift
-//  OrgNoteApp
+//  FastDiff
 //
 //  Created by Vijaya Prakash Kandel on 25.09.18.
 //  Copyright © 2018 com.kandelvijaya. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  Diffable.swift
-//  OrgNoteApp
+//  FastDiff
 //
 //  Created by Vijaya Prakash Kandel on 18.06.18.
 //  Copyright © 2018 com.kandelvijaya. All rights reserved.
@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Conforming types can be used to calculate `diff`
 public protocol Diffable: Hashable {
 
     /// Used to represent the internalItemType that represents another level.
@@ -48,12 +49,15 @@ extension Array: Diffable where Element: Diffable {
         return reduce(0) { $0 ^ $1.diffHash }
     }
 
-}
+} 
 
 extension String: Diffable {}
-
 extension Int: Diffable {}
-
 extension Character: Diffable {}
-
+extension UInt: Diffable {}
+extension URL: Diffable {}
+extension Substring: Diffable {}
+extension Double: Diffable {}
+extension Float: Diffable {}
+extension Bool: Diffable {}
 
