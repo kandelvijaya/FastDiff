@@ -13,6 +13,24 @@ General purpose, fast diff algorithm supporting [m] level nested diffs.
 2. Most algorithm solve Least Common Subsequence problem which is hard to grasp at first
 3. Supports nested diffing as per requirement.
 
+## Installation
+### Via cocoapods
+```swift
+pod 'FastDiff'
+```
+And then in the terminal `pod update`. If you are new to cocoapods please check out [Cocoapods Installation](https://guides.cocoapods.org/using/using-cocoapods)
+
+### Via Swift Package Manager
+Declare the dependency in the swift `Package.swift` file like such:
+```swift
+dependencies: [
+  ///.... other deps
+  .package(url: "https://www.github.com/kandelvijaya/FastDiff", from: "1.0.0"),
+]
+```
+
+Execute the update command `swift package update` and then `swift package generate-xcodeproj`.
+
 ## Running the tests
 
 Go to the source directory, and run:
@@ -48,16 +66,14 @@ let orderedChangeSet = orderedOperation(from: changeSet)
 
 ```
 ### Concept and advanced usage in List View Controller (iOS)
-Please check out this presentation slides that I gave at @mobiconf 2018. https://drive.google.com/file/d/1eY0k_5sHBDgK6Qx6-VR3HTmCQEi9qaW3/view?usp=sharing 
+Please check out this presentation slides that I gave at [@mobiconf 2018](https://drive.google.com/file/d/1eY0k_5sHBDgK6Qx6-VR3HTmCQEi9qaW3/view?usp=sharing)
 
 ## Contributing
 
 Feel free to contribute with Pull Requests. There are many tasks (trivial) left to do. 
 
 ### Potential Tasks
-- Cocoapods support
-- Documentation grammar correction
-- Adding CI and build status
+- Check the issues section for helpful tasks and more description. This is a good place to start contributing. 
 
 ## Authors
 
