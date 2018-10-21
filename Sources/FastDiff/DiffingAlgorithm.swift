@@ -127,6 +127,11 @@ extension LineLookup: CustomStringConvertible {
 
 public func diff<T>(_ oldContent: [T], _ newContent: [T]) -> [Operation<T>] where T: Diffable {
 
+    // Treats the same/equal/identical collections unchanged to not be used for diffing
+    // diff([1,1], [1,1]) ==> no change
+    if oldContent.hashValue == newContent.hashValue && oldContent.diffHash == newContent.diffHash && oldContent == newContent { return [] }
+    if oldContent.isEmpty && newContent.isEmpty { return [] }
+
     typealias DiffHash = Int
 
     var symTable: [DiffHash: SymEntry] = [:]

@@ -79,6 +79,11 @@ final class FastDiffTests: XCTestCase {
         XCTAssertEqual(internalDiff.first!, .add(Cat(name: "meow jr."), 1))
     }
 
+    func test_when2IdenticalCollectionsAreDiffed_thenThereIs0Change() {
+        let operation = diff([301, 301], [301, 301])
+        XCTAssertEqual(operation.count, 0)
+    }
+
     let x = Person(name: "BJ", age: -1, pets: [Cat(name: "meow")])
     let y = Person(name: "BJ", age: -1, pets: [Cat(name: "meow"),
                                                Cat(name: "meow jr.")])
