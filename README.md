@@ -58,6 +58,11 @@ oldModels.merged(with: changeSet) == newModels
 // true
 ```
 
+<div align="center">
+  <img src="./Documentation/diffConcept1.png"><br><br>
+</div>
+
+
 Note that `diff` produces changeset that can't be merged into old collections as is, most of the times. 
 The changeset has to be `ordered` in-order for successful merge. This is also useful if you want to
 apply changeset to `UITableView` or `UICollectionView`.
