@@ -6,12 +6,15 @@
 
 # Fast Diff ![CI status](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
-General purpose, fast diff algorithm supporting [m] level nested diffs.  
+General purpose, fast diff algorithm supporting [m] level nested diffs. 
+
+## Time Complexity
+- Linear [O(n)]
 
 ## Why?
-1. Most diffing algorithm are O(nlogn) or O(n.m) 
-2. Most algorithm solve Least Common Subsequence problem which is hard to grasp at first
-3. Supports nested diffing as per requirement.
+1. Faster than the mainstream algorithm. Most diffing algorithm are O(nlogn) or O(n.m). This one is linear (O(n)).
+2. Most algorithm solve Least Common Subsequence problem which has hard to grasp implementation. This uses 6 simple looping passes.
+3. Supports nested diffing (if you desire)
 
 ## Installation
 ### Via cocoapods
@@ -52,7 +55,9 @@ let changeSet = diff(oldModels, newModels)
 
 /// Verification
 oldModels.merged(with: changeSet) == newModels 
+// true
 ```
+
 Note that `diff` produces changeset that can't be merged into old collections as is, most of the times. 
 The changeset has to be `ordered` in-order for successful merge. This is also useful if you want to
 apply changeset to `UITableView` or `UICollectionView`.
@@ -65,19 +70,19 @@ let orderedChangeSet = orderedOperation(from: changeSet)
 // [.delete("b",1), .delete("a",0), .add("c",0), .add("d",1)]
 
 ```
+
 ### Concept and advanced usage in List View Controller (iOS)
 Please check out this presentation slides that I gave at [@mobiconf 2018](https://drive.google.com/file/d/1eY0k_5sHBDgK6Qx6-VR3HTmCQEi9qaW3/view?usp=sharing)
 
 ## Contributing
 
-Feel free to contribute with Pull Requests. There are many tasks (trivial) left to do. 
+Feel free to contribute with Pull Requests. Should you require more feature, find a bug or want to propose new idea; feel free to post a issue. 
 
 ### Potential Tasks
 - Check the issues section for helpful tasks and more description. This is a good place to start contributing. 
 
 ## Authors
 
-At the moment, solely me:
 1. @kandelvijaya (https://twitter.com/kandelvijaya)
 
 ## License
