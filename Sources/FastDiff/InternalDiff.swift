@@ -8,8 +8,8 @@
 
 import Foundation
 
-public func internalDiff<T: Diffable>(from diffOperations: [Operation<T>.Simple]) -> [(offset: Int, operations: [Operation<T.InternalItemType>.Simple])] {
-    var accumulator = [(offset: Int, operations: [Operation<T.InternalItemType>.Simple])]()
+public func internalDiff<T: Diffable>(from diffOperations: [DiffOperation<T>.Simple]) -> [(offset: Int, operations: [DiffOperation<T.InternalItemType>.Simple])] {
+    var accumulator = [(offset: Int, operations: [DiffOperation<T.InternalItemType>.Simple])]()
     for operation in diffOperations {
         switch operation {
         case let .update(oldContainer, newContainer, atIndex):

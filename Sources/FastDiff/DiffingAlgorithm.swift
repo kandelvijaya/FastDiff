@@ -69,7 +69,7 @@ enum LineLookup {
 
 
 /// Kinds of operation
-public enum Operation<T> {
+public enum DiffOperation<T> {
     case add(T, Int)
     case delete(T, Int)
     case move(T, Int, Int)
@@ -83,11 +83,11 @@ public enum Operation<T> {
 
 }
 
-extension Operation: Equatable where T: Equatable { }
+extension DiffOperation: Equatable where T: Equatable { }
 
 // MARK:- Playground view
 
-extension Operation: CustomStringConvertible {
+extension DiffOperation: CustomStringConvertible {
 
     public var description: String {
         switch self {
@@ -125,7 +125,7 @@ extension LineLookup: CustomStringConvertible {
 
 
 
-public func diff<T>(_ oldContent: [T], _ newContent: [T]) -> [Operation<T>] where T: Diffable {
+public func diff<T>(_ oldContent: [T], _ newContent: [T]) -> [DiffOperation<T>] where T: Diffable {
 
     // Treats the same/equal/identical collections unchanged to not be used for diffing
     // diff([1,1], [1,1]) ==> no change
@@ -219,7 +219,7 @@ public func diff<T>(_ oldContent: [T], _ newContent: [T]) -> [Operation<T>] wher
     ///      old: a b c d
     ///      new: e a b d f
     ///   change: [insert e at 0, insert f at 4]  [delete c from 2]
-    var operations = [Operation<T>]()
+    var operations = [DiffOperation<T>]()
     var deletionKeeper = [Int: Int]() // lineNum: how many lines deleted prior to this
     var runningOffset = 0
     for (index, item) in oas.enumerated() {
@@ -256,14 +256,14 @@ public func diff<T>(_ oldContent: [T], _ newContent: [T]) -> [Operation<T>] wher
 /** Limitation: Can't extend a protocol with a generic typed enum (generic type in general)
  extension Array where Element: Operation<T> { }
  */
-public func orderedOperation<T>(from operations: [Operation<T>]) -> [Operation<T>.Simple] {
+public func orderedOperation<T>(from operations: [DiffOperation<T>]) -> [DiffOperation<T>.Simple] {
     /// Deletions need to happen from higher index to lower (to avoid corrupted indexes)
     ///  [x, y, z] will be corrupt if we attempt [d(0), d(2), d(1)]
     ///  d(0) succeeds then array is [x,y]. Attempting to delete at index 2 produces out of bounds error.
     /// Therefore we sort in descending order of index
-    var deletions = [Int: Operation<T>.Simple]()
-    var insertions = [Operation<T>.Simple]()
-    var updates = [Operation<T>.Simple]()
+    var deletions = [Int: DiffOperation<T>.Simple]()
+    var insertions = [DiffOperation<T>.Simple]()
+    var updates = [DiffOperation<T>.Simple]()
 
     for oper in operations {
         switch oper {
@@ -285,12 +285,12 @@ public func orderedOperation<T>(from operations: [Operation<T>]) -> [Operation<T
 
 extension Array where Element: Hashable {
 
-    public func merged(with operations: [Operation<Element>]) -> Array {
+    public func merged(with operations: [DiffOperation<Element>]) -> Array {
         let orderedOperations = orderedOperation(from: operations)
         return self.merged(with: orderedOperations)
     }
 
-    public func merged(with operations: [Operation<Element>.Simple]) -> Array {
+    public func merged(with operations: [DiffOperation<Element>.Simple]) -> Array {
         /// might not work on collection as we need to initialize a concrete type
         var mutableCollection: [Element] = self
         for operation in operations {
