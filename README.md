@@ -9,10 +9,10 @@
 General purpose, fast diff algorithm supporting [m] level nested diffs. 
 
 ## Time Complexity
-- Linear [O(n)]
+- Linear i.e. O(n)
 
 ## Why?
-1. Faster than the mainstream algorithm. Most diffing algorithm are O(nlogn) or O(n.m). This one is linear (O(n)).
+1. Faster than the mainstream algorithm. Most diffing algorithm are O(nlogn) or O(n.m). This one is linear O(n).
 2. Most algorithm solve Least Common Subsequence problem which has hard to grasp implementation. This uses 6 simple looping passes.
 3. Supports nested diffing (if you desire)
 
@@ -42,6 +42,7 @@ $ swift test
 ```
 
 ## Usage
+   
 ### Algorithm & Verification
 ```swift
 let oldModels = ["apple", "microsoft"]
@@ -75,6 +76,27 @@ let orderedChangeSet = orderedOperation(from: changeSet)
 // [.delete("b",1), .delete("a",0), .add("c",0), .add("d",1)]
 
 ```
+
+### Advanced usage & notes
+1. This algorithm works accurately with value types `Struct`'s. Please refrain from using reference type (`Class` instance). When you must use class instance / object, you might get more updates than you expect. If you want to resolve this issue for your use case please DM me www.twitter.com/kandelvijaya
+2. Tree diffing is possible. However not something the library encourages due to added complexity O(n^2). If you so choose to diff then please use this routine:
+   ```swift
+   public func diffAllLevel<T>(_ oldContent: [T], _ newContent: [T]) -> [DiffOperation<T>] where T: Diffable, T.InternalItemType == T {
+    if oldContent.isEmpty && newContent.isEmpty { return [] }
+    var accumulator: [DiffOperation<T>] = []
+    let thisLevelDiff = diff(oldContent, newContent)
+    for index in thisLevelDiff {
+        if case let .update(o, n, _) = index {
+            accumulator = accumulator + diffAllLevel(o.children, n.children)
+        } else {
+            accumulator.append(index)
+        }
+      }
+      return accumulator
+    }
+
+   ```
+3. The complexity of Graph diffing depends on graph structure. For Trees, its O(n^2). Please note that this change set is not mergeable to the original tree. To circumvent this limitation, use a node with indexes or indepath that points to the graph position implicitly. 
 
 ### Concept and advanced usage in List View Controller (iOS)
 Please check out this presentation slides that I gave at [@mobiconf 2018](https://drive.google.com/file/d/1eY0k_5sHBDgK6Qx6-VR3HTmCQEi9qaW3/view?usp=sharing)
