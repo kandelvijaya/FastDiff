@@ -253,35 +253,6 @@ public func diff<T>(_ oldContent: [T], _ newContent: [T]) -> [DiffOperation<T>] 
     return operations
 }
 
-/** Limitation: Can't extend a protocol with a generic typed enum (generic type in general)
- extension Array where Element: Operation<T> { }
- */
-public func orderedOperation<T>(from operations: [DiffOperation<T>]) -> [DiffOperation<T>.Simple] {
-    /// Deletions need to happen from higher index to lower (to avoid corrupted indexes)
-    ///  [x, y, z] will be corrupt if we attempt [d(0), d(2), d(1)]
-    ///  d(0) succeeds then array is [x,y]. Attempting to delete at index 2 produces out of bounds error.
-    /// Therefore we sort in descending order of index
-    var deletions = [Int: DiffOperation<T>.Simple]()
-    var insertions = [DiffOperation<T>.Simple]()
-    var updates = [DiffOperation<T>.Simple]()
-
-    for oper in operations {
-        switch oper {
-        case let .update(item, newItem, index):
-            updates.append(.update(item, newItem, index))
-        case let .add(item, atIndex):
-            insertions.append(.add(item, atIndex))
-        case let .delete(item, from):
-            deletions[from] = .delete(item, from)
-        case let .move(item, from, to):
-            insertions.append(.add(item, to))
-            deletions[from] = .delete(item, from)
-        }
-    }
-    let descendingOrderedIndexDeletions = deletions.sorted(by: {$0.0 > $1.0 }).map{ $0.1 }
-    return descendingOrderedIndexDeletions + insertions + updates
-}
-
 
 extension Array where Element: Hashable {
 

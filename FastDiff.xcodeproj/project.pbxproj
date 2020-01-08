@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		284D483D23C697EA00DD2963 /* Diff+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284D483B23C6946800DD2963 /* Diff+UIKit.swift */; };
+		284D483E23C697F100DD2963 /* Diff+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284D483B23C6946800DD2963 /* Diff+UIKit.swift */; };
 		2889D0CA22D4D665000E7797 /* FastDiff.h in Headers */ = {isa = PBXBuildFile; fileRef = 2889D0C822D4D665000E7797 /* FastDiff.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2889D0CE22D4D675000E7797 /* Diffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Diffable.swift */; };
 		2889D0CF22D4D675000E7797 /* DiffingAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* DiffingAlgorithm.swift */; };
@@ -65,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		284D483B23C6946800DD2963 /* Diff+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Diff+UIKit.swift"; sourceTree = "<group>"; };
 		2889D0C622D4D665000E7797 /* FastDiff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FastDiff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2889D0C822D4D665000E7797 /* FastDiff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FastDiff.h; sourceTree = "<group>"; };
 		2889D0C922D4D665000E7797 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -186,7 +189,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -197,7 +200,6 @@
 				2889D0C722D4D665000E7797 /* FastDiff */,
 				OBJ_25 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -214,6 +216,7 @@
 				OBJ_9 /* Diffable.swift */,
 				OBJ_10 /* DiffingAlgorithm.swift */,
 				OBJ_11 /* InternalDiff.swift */,
+				284D483B23C6946800DD2963 /* Diff+UIKit.swift */,
 			);
 			name = FastDiffLib;
 			path = Sources/FastDiffLib;
@@ -348,9 +351,10 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_25 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -382,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2889D0D022D4D675000E7797 /* InternalDiff.swift in Sources */,
+				284D483E23C697F100DD2963 /* Diff+UIKit.swift in Sources */,
 				2889D0CE22D4D675000E7797 /* Diffable.swift in Sources */,
 				2889D0CF22D4D675000E7797 /* DiffingAlgorithm.swift in Sources */,
 			);
@@ -410,6 +415,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_49 /* Diffable.swift in Sources */,
+				284D483D23C697EA00DD2963 /* Diff+UIKit.swift in Sources */,
 				OBJ_50 /* DiffingAlgorithm.swift in Sources */,
 				OBJ_51 /* InternalDiff.swift in Sources */,
 			);
