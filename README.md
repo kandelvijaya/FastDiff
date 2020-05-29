@@ -73,7 +73,7 @@ let chnageSet = diff(["A","B"], [“C”,"D"])
 // [.delete("A",0), .delete("B",1), .add("C",0), .add(“D",1)]
 
 let orderedChangeSet = orderedOperation(from: changeSet)
-// [.delete("b",1), .delete("a",0), .add("c",0), .add("d",1)]
+// [.delete("B",1), .delete("A",0), .add("C",0), .add("D",1)]
 
 ```
 
