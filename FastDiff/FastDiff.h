@@ -5,7 +5,7 @@
 //  Created by Vijaya Prakash Kandel on 7/9/19.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for FastDiff.
 FOUNDATION_EXPORT double FastDiffVersionNumber;
