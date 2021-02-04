@@ -6,18 +6,18 @@ let package = Package(
     name: "FastDiff",
     products: [
         .library(
-            name: "FastDiffLib",
-            targets: ["FastDiffLib"]),
+            name: "FastDiff",
+            targets: ["FastDiff"]),
     ],
     dependencies: [
         .package(url: "git@github.com:kandelvijaya/AlgorithmChecker.git", from: "0.1.0"),
     ],
     targets: [
         .target(
-            name: "FastDiffLib",
+            name: "FastDiff",
             dependencies: []),
         .testTarget(
             name: "FastDiffTests",
-            dependencies: ["FastDiffLib", "AlgoChecker"]),
+            dependencies: ["FastDiff", "AlgoChecker"]),
     ]
 )

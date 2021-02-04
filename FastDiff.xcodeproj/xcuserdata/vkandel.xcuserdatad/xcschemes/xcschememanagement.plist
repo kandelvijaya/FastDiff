@@ -3,15 +3,79 @@
 <plist version="1.0">
 <dict>
 	<key>SchemeUserState</key>
-	<dict/>
+	<dict>
+		<key>AlgoChecker.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>AlgoCheckerPackageDescription.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>FastDiff.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>FastDiffPackageDescription.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>FastDiffPackageTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>FastDiffTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>AlgoChecker::AlgoChecker</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AlgoChecker::SwiftPMPackageDescription</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FastDiff::FastDiff</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>FastDiff::FastDiffLib</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>FastDiff::FastDiffPackageTests::ProductTarget</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>FastDiff::FastDiffTests</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FastDiff::SwiftPMPackageDescription</key>
 		<dict>
 			<key>primary</key>
 			<true/>
