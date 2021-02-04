@@ -13,8 +13,8 @@ public func internalDiff<T: Diffable>(from diffOperations: [DiffOperation<T>.Sim
     for operation in diffOperations {
         switch operation {
         case let .update(oldContainer, newContainer, atIndex):
-            let oldChildItems = oldContainer.children
-            let newChildItems = newContainer.children
+            let oldChildItems = oldContainer.innerDiffableItems
+            let newChildItems = newContainer.innerDiffableItems
             let internalDiff = orderedOperation(from: diff(oldChildItems, newChildItems))
             let output = (atIndex, internalDiff)
             accumulator.append(output)

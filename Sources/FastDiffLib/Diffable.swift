@@ -10,46 +10,64 @@ import Foundation
 
 /// Conforming types can be used to calculate `diff`
 public protocol Diffable: Hashable {
-
+    
     /// Used to represent the internalItemType that represents another level.
     /// By default, this will be the same type as the conforming i.e. without customization.
     associatedtype InternalItemType: Diffable = Self
-
-    /// Internal Items whose `diff` should be considered in case of `update`
-    /// Typical usage would be to override this and return a set of items.
-    /// Those items should be considered both for equality and hashValue as normal.
-    /// Parent/Container are determined to be in `update` state, if either object
-    /// pointed by pointer changed or their internalItems aren't the same.
-    var children: [InternalItemType] { get }
-
-    /// Make sure to do 2 things:
-    /// 1. Provide a very unique hash value. If hash collision occurs,
-    ///    diff result will be false positive.
-    /// 2. If this is a parent container then exclude hash computation
-    ///    for the children Diffable. Two equal container models with same hash
-    ///    are checked for equality to determine either they are uniquely same
-    ///    or update.
-    /// This is defaulted to `hashValue` when conforming type conforms to Equatable
+    
+    
+    
+    /**
+     **Defaults** to return empty array; making it non-container type.
+     Allows Diffable to represent a Graph/Tree structure.
+     
+     Items can be in update state either object pointed by pointer changed or their internalItems aren't the same.
+     
+     ## Note
+     Equality and hashValue stay as is
+     
+     ## Cases
+     2 Diffable items determined to be in **update** state if
+     - both items are not leaves (non-container type) in the graph
+     - are not equal (Equality considers every property in Diffable)
+     - both have the same diffHash (diffHash should exclude innerDiffableItems)
+     */
+    var innerDiffableItems: [InternalItemType] { get }
+    
+    /**
+     **Deafults** to returning `hashValue` when this type conforms to `Equatable`
+     
+      Only conform and customize conformance if you intend to represnet this Diffable type as Graph/Tree.
+      When you conform; leave out `innerDiffableItems`s hashValue.
+     
+      ## Two Diffable tiems
+      - with same diffHash
+           - and not equal is considered update
+           - and equal is considered exact replicated item.
+      - with different diffHash
+           - cannot be equal (impossible)
+           - are considered 2 different items (delete then insert)
+     */
     var diffHash: Int { get }
-
+    
 }
 
 
 extension Diffable {
-
+    
     public var diffHash: Int { return self.hashValue }
-    public var children: [InternalItemType] { return [] }
-
+    public var innerDiffableItems: [InternalItemType] { return [] }
+    
 }
 
 
 extension Array: Diffable where Element: Diffable {
-
+    
     public var diffHash: Int {
         return reduce(0) { $0 ^ $1.diffHash }
     }
-
-} 
+    
+}
 
 extension String: Diffable {}
 extension Int: Diffable {}
