@@ -100,28 +100,10 @@ let orderedChangeSet = orderedOperation(from: changeSet)
 
 ### Concept and advanced usage in List View Controller (iOS)
 Please check out this presentation slides that I gave at [@mobiconf 2018](https://drive.google.com/file/d/1eY0k_5sHBDgK6Qx6-VR3HTmCQEi9qaW3/view?usp=sharing)
-
-## Contributing
-
-Feel free to contribute with Pull Requests. Should you require more feature, find a bug or want to propose new idea; feel free to post a issue. 
-
-### Potential Tasks
-- Check the issues section for helpful tasks and more description. This is a good place to start contributing. 
-
-## Authors
-
-1. @kandelvijaya (https://twitter.com/kandelvijaya)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Inspired by Paul Heckel's paper & algorithm 
+  
 
 
-## Inner workings 
+## Why is nested diffing important? Tutorial/HowTo 
 Say you got a list of Component where each is defined as:
 
 ```swift
@@ -202,3 +184,19 @@ There can be 2 potential solutions:
 
       }
       ```
+      - UI side: when receiving `.update(,,,)` on section level, we can perform diff on internal items like so `diff(old.innerDiffableItems, new.innerDiffableItems)` to receive exact changes on cell level which can then be patched to `section.performBatchUpdate`
+      - New task addition is animated, its the only thing that changed on the UI
+      - Effecient patching of changed content. 
+
+
+## Authors
+
+1. @kandelvijaya (https://twitter.com/kandelvijaya)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Inspired by Paul Heckel's paper & algorithm

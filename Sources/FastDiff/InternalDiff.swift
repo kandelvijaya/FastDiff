@@ -24,3 +24,25 @@ public func internalDiff<T: Diffable>(from diffOperations: [DiffOperation<T>.Sim
     }
     return accumulator
 }
+
+
+/// Calculates diff from entire graph going deeper as it finds `update` on container.
+/// It is greedy algorithm.
+/// - NOTE: Profile when running on main thread.
+///
+/// - Complexity:- O(allEdges * nlog(n))
+public func diffAllLevel<T>(_ oldContent: [T], _ newContent: [T]) -> [DiffOperation<T>] where T: Diffable, T.InternalItemType == T {
+    if oldContent.isEmpty && newContent.isEmpty { return [] }
+    var accumulator: [DiffOperation<T>] = []
+    
+    let thisLevelDiff = diff(oldContent, newContent)
+    for oneDiffItem in thisLevelDiff {
+        // We ignore the index.
+        if case let .update(old, new, _) = oneDiffItem {
+            accumulator = accumulator + diffAllLevel(old.innerDiffableItems, new.innerDiffableItems)
+        } else {
+            accumulator.append(oneDiffItem)
+        }
+    }
+    return accumulator
+}
