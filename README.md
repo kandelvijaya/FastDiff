@@ -79,23 +79,7 @@ let orderedChangeSet = orderedOperation(from: changeSet)
 
 ### Advanced usage & notes
 1. This algorithm works accurately with value types `Struct`'s. Please refrain from using reference type (`Class` instance). When you must use class instance / object, you might get more updates than you expect. If you want to resolve this issue for your use case please DM me www.twitter.com/kandelvijaya
-2. Tree diffing is possible. However not something the library encourages due to added complexity O(n^2). If you so choose to diff then please use this routine:
-   ```swift
-   public func diffAllLevel<T>(_ oldContent: [T], _ newContent: [T]) -> [DiffOperation<T>] where T: Diffable, T.InternalItemType == T {
-    if oldContent.isEmpty && newContent.isEmpty { return [] }
-    var accumulator: [DiffOperation<T>] = []
-    let thisLevelDiff = diff(oldContent, newContent)
-    for index in thisLevelDiff {
-        if case let .update(o, n, _) = index {
-            accumulator = accumulator + diffAllLevel(o.children, n.children)
-        } else {
-            accumulator.append(index)
-        }
-      }
-      return accumulator
-    }
-
-   ```
+2. Tree diffing is possible. However not something the library encourages due to added complexity O(n^2). If you so choose to diff then please use `diffAllLevel(,)`
 3. The complexity of Graph diffing depends on graph structure. For Trees, its O(n^2). Please note that this change set is not mergeable to the original tree. To circumvent this limitation, use a node with indexes or indepath that points to the graph position implicitly. 
 
 ### Concept and advanced usage in List View Controller (iOS)
