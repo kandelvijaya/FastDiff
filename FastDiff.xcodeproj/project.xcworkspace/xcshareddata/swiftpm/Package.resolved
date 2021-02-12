@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AlgoChecker",
+        "repositoryURL": "https://github.com/kandelvijaya/AlgorithmChecker.git",
+        "state": {
+          "branch": null,
+          "revision": "3c786303ec2cdd0018b77f1597d6e38e0448039a",
+          "version": "0.1.5"
+        }
+      },
+      {
+        "package": "Randomizer",
+        "repositoryURL": "https://github.com/kandelvijaya/Randomizer.git",
+        "state": {
+          "branch": "master",
+          "revision": "d7f6aa7980f87fd0a6e7369bf5f37703ee8e91ec",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
