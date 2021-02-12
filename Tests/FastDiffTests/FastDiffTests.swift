@@ -20,7 +20,7 @@ extension Person: Hashable, Diffable {
         return name.hashValue ^ age.hashValue
     }
 
-    var children: [Person.InternalItemType] {
+    var innerDiffableItems: [Cat] {
         return pets
     }
 }
@@ -74,7 +74,7 @@ final class FastDiffTests: XCTestCase {
     func test_whenContainerTypesAreDiffed_thereIsUpdateAndEachContainsCollectionOfDiffable_thenInternalDiffCanBePerformed() {
         let operation = diff([x], [y])
         XCTAssertEqual(operation.first!, .update(x, y, 0))
-        let internalDiff = diff(x.children, y.children)
+        let internalDiff = diff(x.innerDiffableItems, y.innerDiffableItems)
         XCTAssertEqual(internalDiff.count, 1)
         XCTAssertEqual(internalDiff.first!, .add(Cat(name: "meow jr."), 1))
     }
