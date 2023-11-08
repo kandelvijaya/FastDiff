@@ -10,7 +10,7 @@ let package = Package(
             targets: ["FastDiff"]),
     ],
     dependencies: [
-        .package(url: "git@github.com:kandelvijaya/AlgorithmChecker.git", from: "0.1.0"),
+        .package(url: "https://github.com/kandelvijaya/AlgorithmChecker.git", from: "0.1.0"),
     ],
     targets: [
         .target(
