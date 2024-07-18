@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -62,8 +62,8 @@
 
 /* Begin PBXFileReference section */
 		284009B925D6DDAD009EB9E4 /* FastDiffDiffAllLevelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastDiffDiffAllLevelTests.swift; sourceTree = "<group>"; };
-		"AlgoChecker::AlgoChecker::Product" /* AlgoChecker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlgoChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"FastDiff::FastDiff::Product" /* FastDiff.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FastDiff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"AlgoChecker::AlgoChecker::Product" /* AlgoChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlgoChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"FastDiff::FastDiff::Product" /* FastDiff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FastDiff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"FastDiff::FastDiffTests::Product" /* FastDiffTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = FastDiffTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* DiffingAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffingAlgorithm.swift; sourceTree = "<group>"; };
 		OBJ_11 /* InternalDiff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalDiff.swift; sourceTree = "<group>"; };
@@ -378,6 +378,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = YES;
@@ -460,6 +461,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_OPTIMIZATION_LEVEL = s;
